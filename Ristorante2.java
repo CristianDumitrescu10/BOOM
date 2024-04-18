@@ -1,35 +1,6 @@
-import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-
-
-
-public class Ristorante {
-
-    public static void main(String[] args) {
-        Menu menu = new Ordinazione();
-        //Piatto piattis= new Piatto("Carbonara", 14);
-        menu.aggiungiPiatto();
-        //Aggiungo piatti questo
-        //System.out.println(menu.ArrayList<Piatto>);
-        //Voglio Stampare un Menu
-        
-
-
-        menu.stampaMenu();
-
-        // Ordiniamo
-        Ordinazione ordinazione = new Ordinazione();
-
-        // Stampo ordinazione
-        ordinazione.stampaOrdinazione();
-    }
-}
-
-
-class Piatto{
+class Piatto {
     String nome;
     double prezzo;
 
@@ -56,15 +27,14 @@ class Piatto{
 }
 
 class Menu {
-    ArrayList<Piatto> piatti = new ArrayList<>(); 
-    
+    private ArrayList<Piatto> piatti;
+
     public Menu() {
         this.piatti = new ArrayList<>();
     }
 
-    public void aggiungiPiatto() {
-        Piatto piattis= new Piatto("Carbonara", 14);
-        piatti.add(piattis);
+    public void aggiungiPiatto(Piatto piatto) {
+        piatti.add(piatto);
     }
 
     public void rimuoviPiatto(Piatto piatto) {
@@ -79,6 +49,7 @@ class Menu {
             }
         }
     }
+
     public void stampaMenu() {
         System.out.println("Menu:");
         for (Piatto piatto : piatti) {
@@ -86,12 +57,20 @@ class Menu {
         }
     }
 }
+class Ordinazione {
+    ArrayList<Piatto> piatti;
 
-class Ordinazione extends Menu{
-    public Ordinazione(){
-        super();
+    public Ordinazione() {
+        this.piatti = new ArrayList<>();
     }
 
+    public void aggiungiPiatto(Piatto piatto) {
+        piatti.add(piatto);
+    }
+
+    public void rimuoviPiatto(Piatto piatto) {
+        piatti.remove(piatto);
+    }
 
     public double calcolaTotale() {
         double totale = 0;
@@ -110,4 +89,15 @@ class Ordinazione extends Menu{
     }
 }
 
+public class Ristorante2 {
+    public static void main(String[] args) {
+        Menu menu = new Menu();
+        menu.aggiungiPiatto(new Piatto("Carbonara", 14));
+        menu.stampaMenu();
 
+        // Creazione di un'ordinazione e aggiunta di piatti
+        Ordinazione ordinazione = new Ordinazione();
+        ordinazione.aggiungiPiatto(new Piatto("Carbonara", 14));
+        ordinazione.stampaOrdinazione();
+    }
+}
