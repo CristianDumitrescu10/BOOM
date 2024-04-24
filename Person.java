@@ -129,6 +129,55 @@ class Main {
     myAnimal.animalSound();
     myPig.animalSound();
     myDog.animalSound();
- }  }*/
+ }  }
 
 
+abstract class Animal {
+  public abstract void animalSound();
+}
+
+class Pig extends Animal {
+  public void animalSound() {
+    System.out.println("The pig says: wee wee");
+  }
+}
+
+class Dog extends Animal {
+  public void animalSound() {
+    System.out.println("The dog says: bow wow");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    // Animal myAnimal = new Animal(); non si possono istanziare classi astratte
+    Animal myPig = new Pig();
+    Animal myDog = new Dog();
+    // myAnimal.animalSound();
+    myPig.animalSound();
+    myDog.animalSound();
+  }
+}*/
+interface Animal {
+  public void animalSound(); // interface method (does not have a body)
+
+  public void sleep(); // interface method (does not have a body)}
+
+  class Pig implements Animal {
+    public void animalSound() {
+      System.out.println("The pig says: wee wee");
+    }
+
+    public void sleep() {
+      System.out.println("Zzz");
+    }
+  }
+
+  class Main {
+    public static void main(String[] args) {
+      Pig myPig = new Pig();
+      myPig.animalSound();
+      myPig.sleep();
+    }
+  }
+}
